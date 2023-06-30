@@ -25,7 +25,7 @@
             display: flex;
             justify-content: space-between;
         }
-        .number, .operation {
+        .number, .operation, .equals {
             width: 30%;
             text-align: center;
             border: 1px solid #ccc;
@@ -34,16 +34,26 @@
             background-color: bisque;
         }
 
-        .operation {
+        .operation, .equals {
             background-color: rgb(255, 255, 255);
         }
         .display {
             width: 100%;
             text-align: right;
             border: 1px solid #ccc;
+            border-radius: 5px;
             padding: 10px;
             margin-bottom: 10px;
             background-color: #fff;
+        }
+        .clear {
+            width: 100%;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: salmon;
+            cursor: pointer;
+            margin: 10px auto;
         }
     </style>
 </head>
@@ -79,16 +89,75 @@
     <div class="row">
         <div class="operation">*</div>
         <div class="operation">/</div>
-        <div class="operation">=</div>
+        <div class="equals">=</div>
     </div>
+    <button class="clear">CLEAR</button>
 </div>
 <script>
     /* --------------------
      Add your code here
     --------------------- */
-    let display = document.querySelector('.display');
-    let number = document.querySelector('.number');
-    let operation = document.querySelector('.operation');
+    // get the different elements in calculator
+    // display holds the value of the last number pushed
+    const display = document.querySelector('.display');
+    // assign numbers to the 
+    const numbers = document.querySelectorAll('.number');
+    // assign operations to the operation pushed
+    const operations = document.querySelectorAll('.operation');
+    // get equals operator
+    const equals = document.querySelector('.equals');
+    // assign clear to the clear button
+    const clear = document.querySelector('.clear');
+
+    // declare currentNumber, gets appended anytime a number is pressed
+    let currentNumber = '';
+    
+    // make event listeners to get the values of buttons pushed
+    numbers.forEach((number) => {
+        number.addEventListener('click', () => {
+            // number that has been input
+            let inputNumber = number.textContent;
+            console.log(inputNumber);
+            currentNumber = currentNumber + String(inputNumber);
+            console.log(currentNumber);
+            display.textContent = currentNumber;
+        });
+    });
+
+    // make event listeners to get the values of buttons pushed
+    // make sure that operations are not repeated
+    operations.forEach((operation) => {
+        operation.addEventListener('click', () => {
+            console.log(operation.textContent);
+        });
+    });
+
+    
+
+    clear.addEventListener('click', () => {
+        result = 0;
+        console.log('calculator cleared');
+    });
+
+    // initial value for the calculation
+    let result = 0;
+
+    // array to hold the calculation values, initially an empty string
+    let calculation = '';
+
+    // use eval to calculate the result
+    equals.addEventListener('click', () => {
+        eval(calculation);
+        result = calculation;
+    });
+    
+
+
+    // value for the calulation
+    display.textContent = result;
+
+    // function to calculate the result;
+
 
 </script>
 </body>
