@@ -135,7 +135,10 @@
             }
             console.log('currentNumber', currentNumber);
             display.textContent = currentNumber;
-            calculation = calculation + currentNumber;
+            // add the currentNumber to the calculation
+            calculation += currentNumber;
+            // reset currentNumber value
+            currentNumber = '';
         });
     });
 
@@ -147,7 +150,7 @@
             // operation that has been input
             let inputOperation = operation.textContent;
             // add the operation to the calculation
-            calculation = currentNumber + inputOperation;
+            calculation += inputOperation; 
             // reset currentNumber
             currentNumber = '';
             console.log(calculation);
