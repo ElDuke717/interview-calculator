@@ -5,20 +5,40 @@
     <title>Calculator</title>
     <style>
     /* --------------------
-     Add your styling here
+     Styles for the calculator
      -------------------- */
 
-        * {
-            font-family: Arial, Helvetica, sans-serif;
+     :root {
+    --main-bg-color: #12263A;
+    --button-bg-color: #F4D1AE;
+    --button-hover-color: #C5D8D1;
+    --button-active-color: #06BCC1;
+    --operation-bg-color: #fff;
+    --display-bg-color: #fff;
+    --clear-bg-color: #06BCC1;
+
+    /* Firey color scheme */
+    /* --main-bg-color: #6a1b9a;
+    --button-bg-color: #ff8f00;
+    --button-hover-color: #ff6f00;
+    --button-active-color: #c62828;
+    --operation-bg-color: #ffca28;
+    --display-bg-color: #ffca28;
+    --clear-bg-color: #c62828; */
+
         }
-     
+
+        * {
+            font-family: Arial, Helvetica, sans-serif; 
+        }
+
         .calculator {
             width: 300px;
             margin: 0 auto;
             border: 1px solid #ccc;
             padding: 10px;
             border-radius: 5px;
-            background-color: rgb(101, 106, 106);
+            background-color: var(--main-bg-color);
         }
 
         .row {
@@ -32,19 +52,19 @@
             border: 1px solid #ccc;
             padding: 10px;
             cursor: pointer;
-            background-color: bisque;
+            background-color: var(--button-bg-color);
         }
-        
+
         .number:hover, .operation:hover, .equals:hover {
-            background-color: rgb(161, 161, 161);
+            background-color: var(--button-hover-color);
         }
 
         .number:active, .operation:active, .equals:active {
-            background-color: rgb(208, 29, 29);
+            background-color: var(--button-active-color);
         }
 
         .operation, .equals {
-            background-color: rgb(255, 255, 255);
+            background-color: var(--operation-bg-color);
         }
 
         .display {
@@ -54,7 +74,7 @@
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 10px;
-            background-color: #fff;
+            background-color: var(--display-bg-color);
         }
 
         .clear {
@@ -62,7 +82,7 @@
             text-align: center;
             border: 1px solid #ccc;
             padding: 10px;
-            background-color: salmon;
+            background-color: var(--clear-bg-color);
             cursor: pointer;
             margin: 10px auto;
         }
@@ -71,7 +91,7 @@
 <body>
 <div class="calculator">
     <!----------------------
-    Add your markup here
+    Structure of the calculator    
     ------------------------>
     
     <div class="row">
@@ -109,7 +129,7 @@
 </div>
 <script>
     /* --------------------
-     Add your code here
+     Code to handle the mathmatical operations
     --------------------- */
     // get the different elements in calculator
     // display holds the value of the last number pushed
