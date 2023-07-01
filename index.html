@@ -23,16 +23,24 @@
 
         .row {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
         }
 
         .number, .operation, .equals {
-            width: 30%;
+            width: 75px;
             text-align: center;
             border: 1px solid #ccc;
             padding: 10px;
             cursor: pointer;
             background-color: bisque;
+        }
+        
+        .number:hover, .operation:hover, .equals:hover {
+            background-color: rgb(161, 161, 161);
+        }
+
+        .number:active, .operation:active, .equals:active {
+            background-color: rgb(208, 29, 29);
         }
 
         .operation, .equals {
@@ -86,11 +94,14 @@
     </div>
     <div class="row">
         <div class="number">0</div>
-        <div class="operation">+</div>
-        <div class="operation">-</div>
+        <div class="number">.</div>
     </div>
     <div class="row">
+        <div class="operation">+</div>
+        <div class="operation">-</div>
         <div class="operation">*</div>
+    </div>
+    <div class="row">
         <div class="operation">/</div>
         <div class="equals">=</div>
     </div>
@@ -113,7 +124,7 @@
     const clear = document.querySelector('.clear');
 
     // declare currentNumber, gets appended anytime a number is pressed
-    let currentNumber = '';
+    let currentNumber = '0';
 
     // variable to hold the calculation values, initially an empty string
     let calculation = '';
@@ -128,16 +139,14 @@
             let inputNumber = number.textContent;
             console.log('inputNumber', inputNumber);
             // add the number to the currentNumber - currentNumber is a string
-            currentNumber = currentNumber + String(inputNumber);
+            currentNumber = currentNumber += String(inputNumber);
             // remove leading zeros
-            if (currentNumber[0] === '0') {
+            if (currentNumber.length > 1 && currentNumber[0] === '0') {
                 currentNumber = currentNumber.slice(1);
             }
             display.textContent = currentNumber;
             // add the currentNumber to the calculation
-            calculation += currentNumber;
-            // reset currentNumber value
-            currentNumber = '';
+            calculation += inputNumber;
         });
     });
 
@@ -167,6 +176,7 @@
     equals.addEventListener('click', () => {
         // console.log('equals pushed');
         console.log('calculation', calculation);
+        // add the currentNumber to the calculation
         result = eval(calculation);
         console.log('result', result);
         display.textContent = result;
