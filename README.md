@@ -1,7 +1,4 @@
 # Calculator
 
-Build a web calculator, that supports the basic operations of add, remove, multiply and divide.
+A web-based calculator capable of performing the fundamental arithmetic functions - addition, subtraction, multiplication, and division. This calculator also offers the functionality to reset its current state with a 'clear' button, and it includes the option to use a decimal point for precise calculations.
 
-In addition, support resetting the current state, as well as a decimal point button.
-
-When you feel ready, you can validate your solution using any collaborative HTML/CSS renderer, such as this one.
