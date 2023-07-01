@@ -133,7 +133,6 @@
             if (currentNumber[0] === '0') {
                 currentNumber = currentNumber.slice(1);
             }
-            console.log('currentNumber', currentNumber);
             display.textContent = currentNumber;
             // add the currentNumber to the calculation
             calculation += currentNumber;
@@ -146,14 +145,12 @@
     // make sure that operations are not repeated
     operations.forEach((operation) => {
         operation.addEventListener('click', () => {
-            console.log(operation.textContent);
             // operation that has been input
             let inputOperation = operation.textContent;
             // add the operation to the calculation
             calculation += inputOperation; 
             // reset currentNumber
             currentNumber = '';
-            console.log(calculation);
         });
     });
 
@@ -164,12 +161,11 @@
         display.textContent = 0;
         currentNumber = 0;
         calculation = '';
-        console.log('calculator cleared');
     });
 
     // use eval to calculate the result
     equals.addEventListener('click', () => {
-        console.log('equals pushed');
+        // console.log('equals pushed');
         console.log('calculation', calculation);
         result = eval(calculation);
         console.log('result', result);
