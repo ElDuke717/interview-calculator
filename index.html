@@ -9,7 +9,6 @@
      -------------------- */
 
         * {
-                
             font-family: Arial, Helvetica, sans-serif;
         }
      
@@ -21,10 +20,12 @@
             border-radius: 5px;
             background-color: rgb(101, 106, 106);
         }
+
         .row {
             display: flex;
             justify-content: space-between;
         }
+
         .number, .operation, .equals {
             width: 30%;
             text-align: center;
@@ -37,6 +38,7 @@
         .operation, .equals {
             background-color: rgb(255, 255, 255);
         }
+
         .display {
             width: 100%;
             text-align: right;
@@ -46,6 +48,7 @@
             margin-bottom: 10px;
             background-color: #fff;
         }
+
         .clear {
             width: 100%;
             text-align: center;
@@ -100,7 +103,7 @@
     // get the different elements in calculator
     // display holds the value of the last number pushed
     const display = document.querySelector('.display');
-    // assign numbers to the 
+    // assign numbers to the number button
     const numbers = document.querySelectorAll('.number');
     // assign operations to the operation pushed
     const operations = document.querySelectorAll('.operation');
@@ -117,10 +120,12 @@
         number.addEventListener('click', () => {
             // number that has been input
             let inputNumber = number.textContent;
-            console.log(inputNumber);
+            console.log('inputNumber', inputNumber);
+            // add the number to the currentNumber - currentNumber is a string
             currentNumber = currentNumber + String(inputNumber);
-            console.log(currentNumber);
+            console.log('currentNumber', currentNumber);
             display.textContent = currentNumber;
+            calculation = calculation + currentNumber;
         });
     });
 
@@ -129,13 +134,23 @@
     operations.forEach((operation) => {
         operation.addEventListener('click', () => {
             console.log(operation.textContent);
+            // operation that has been input
+            let inputOperation = operation.textContent;
+            // add the operation to the calculation
+            calculation = calculation + currentNumber + inputOperation;
+            // reset currentNumber
+            currentNumber = '';
+            console.log(calculation);
         });
     });
 
-    
-
     clear.addEventListener('click', () => {
+        // reset the calculator
         result = 0;
+        // reset the display to zero
+        display.textContent = 0;
+        currentNumber = 0;
+        calculation = '';
         console.log('calculator cleared');
     });
 
@@ -147,12 +162,12 @@
 
     // use eval to calculate the result
     equals.addEventListener('click', () => {
+        console.log('equals pushed');
+        console.log('calculation', calculation);
         eval(calculation);
         result = calculation;
     });
     
-
-
     // value for the calulation
     display.textContent = result;
 
